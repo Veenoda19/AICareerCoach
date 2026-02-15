@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: career_coach
+  datasource:
+    url: jdbc:mysql://localhost:3306/career_coach_db
+    username: root
+    password: "@#V33n9daj19!"
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 10
+      auto-commit: true
+      transaction-isolation: TRANSACTION_READ_COMMITTED
+
+# Hibernate properties
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+
+# Enable Prometheus Metrics
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, prometheus
+
+# Server port
+server:
+  port: 8081
